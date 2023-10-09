@@ -1,5 +1,5 @@
 NAME = so_long
-INCLUDE = -I./src -I $(LIBMLX)/include/MLX42
+INCLUDE = -I ./src/ -I $(LIBMLX)/include/MLX42
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -24,10 +24,10 @@ OBJECTS = $(SOURCES:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(MLX) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) $(LIBFT) $(MLX_PATH) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I ./include/so_long.h
+	$(CC) $(CFLAGS) -c $< -o $@ -I ./src/so_long.h
 
 $(LIBFT):
 	make -C ./libft

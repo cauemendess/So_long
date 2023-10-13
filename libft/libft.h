@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 11:24:34 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/10/04 10:29:21 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:04:28 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_list
 
 # endif
 
-char				*get_next_line(int fd);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isdigit(int c);
@@ -73,5 +72,9 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+char				*get_next_line(int fd);
+char				*ft_strjoin_gnl(char *s1, char *s2);
+char				*ft_strchr_gnl(const char *s, int c);
+char				*ft_strdup_gnl(char *s);
 
 #endif

@@ -8,11 +8,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define PLAYER 'P'
-# define WALL '1'
-# define FLOOR '0'
-# define EXIT 'E'
-# define COIN 'C'
+# define CHAR_PLAYER 'P'
+# define CHAR_WALL '1'
+# define CHAR_FLOOR '0'
+# define CHAR_EXIT 'E'
+# define CHAR_COIN 'C'
 
 # define WIDTH 650
 # define HEIGHT 650
@@ -20,9 +20,15 @@
 # define PLAYER_FRONT "./assets/bonecodefrentex.png"
 # define MAPS "./maps/"
 
+typedef struct s_position
+{
+	int		x;
+	int		y;
+}			s_position;
+
 typedef struct s_map
 {
-	char	**matriz;
+	char	**matrice;
 	int		player;
 	int		colluns;
 	int		rolls;
@@ -44,5 +50,7 @@ typedef struct s_game
 void		initialize_value(t_game *game);
 void		validate_map(t_game *game);
 void		init_mlx(void);
+void		ft_error(char *message);
+
 
 #endif

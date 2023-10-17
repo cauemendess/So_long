@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 MLX = ./MLX42/build/libmlx42.a 	
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft/
+
 LIBMLX = ./MLX42
 OBJ_DIR = ./obj
 MLXFLAGS = $(MLX) $(INCLUDE) -ldl -lglfw -pthread -lm
@@ -16,7 +17,7 @@ GREEN = \033[1;32m
 RED = \033[1;31m
 RESET = \033[0m
 
-SOURCES =$(addprefix src/, so_long.c initialize_game.c validate.c)
+SOURCES = $(addprefix src/, so_long.c initialize_game.c validate.c error.c)
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
@@ -49,6 +50,7 @@ libclean:
 
 libfclean:
 	@make fclean -C ./libft --no-print-directory
+
 
 re: fclean all
 

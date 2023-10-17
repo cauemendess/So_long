@@ -30,23 +30,29 @@ void	init_mlx(void)
 	image_init(mlx);
 }
 
-
-int32_t	main(int argc, char **argv)
+void	arguments_check(int ac, char **av)
 {
+	int map_param_len;
+	
+	if(ac > 2)
+		ft_error("Muitos argumentos\n");
+	if(ac < 2)
+		ft_error("Poucos argumentos\n");
+	map_param_len = ft_strlen(av[1]);
+	if (!ft_strnstr(&av[1][map_param_len - 4], ".ber", 4))
+		ft_error("Tem que ter (.ber) no arquivo\n");
+	
+}
 
+
+int	main(int argc, char **argv)
+{
 	t_game game;
-
-
 	game.fd = open(argv[1], O_RDONLY);
+	arguments_check(argc, argv);
+	initialize_value(&game);
+	validate_map(&game);
 
-	if (argc == 2)
-	{
-		initialize_value(&game);
-		validate_map(&game);
-	} else 
-	{
-		printf("Numero errado de argumentos");
-	}
 
 	return (EXIT_SUCCESS);
 }

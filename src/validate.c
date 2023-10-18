@@ -1,24 +1,29 @@
 #include "so_long.h"
 
-//void	init_layer(t_game *game)
-//{
-//	unsigned int x;
-//	unsigned int y;
-//	y = 0;
-//	while (game->map.matrice[y])
-//	{
-//		x = 0;
-//		while(game->map.matrice[x][y])
-//		{
-//			define_map_struct(game, game->map.matrice[x][y]);
-//			x++;
-//		}
-//		y++;
-//	}
-	
-//}
+void	init_map_matrice(t_game *game);
+void	define_map_struct(t_game *game, char c);
+int		check_colluns(t_game *game);
+void	validate_map(t_game *game);
 
-// o parâmetro c deve ser a posição desse char na matriz alocada
+void	init_layer(t_game *game)
+{
+	unsigned int	x;
+	unsigned int	y;
+
+	y = 0;
+	while (game->map.matrice[y])
+	{
+		x = 0;
+		while (game->map.matrice[y][x])
+		{
+			define_map_struct(game, game->map.matrice[y][x]);
+			x++;
+		}
+		y++;
+	}
+	validate_map(game);
+}
+
 void	define_map_struct(t_game *game, char c)
 {
 	if (ft_strchr("PEC01", c) == NULL)
@@ -36,39 +41,28 @@ void	define_map_struct(t_game *game, char c)
 		game->map.walls++;
 }
 
+int	check_colluns(t_game *game)
+{
+	size_t	first_line_len;
+	size_t	i;
+
+	i = 0;
+	first_line_len = ft_strlen(game->map.matrice[0]);
+	while (game->map.matrice[i] != NULL)
+	{
+		if (ft_strlen(game->map.matrice[i]) != first_line_len)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	validate_map(t_game *game)
 {
-	//char	c;
-	char	*map;
-	char	*line;
-	//size_t	i;
-
-	map = "";
-	while (1)
-	{
-		line = get_next_line(game->fd);
-		if (!line)
-			break ;
-		//i = 0;
-		map = ft_strjoin(map, line);
-		//fazer uma função aqui para percorrer a matriz (tanto linhas como colunas)
-		//while (i < ft_strlen(line))
-		//{
-		//	c = line[i];
-		//	define_map_struct(game, line[i]);
-		//	i++;
-		//}
-		game->map.rolls++;
-		//printf("%zu\n", i);
-		free(line);
-	}
-	game->map.matrice = ft_split(map, '\n');
-	free(map);
-
 	if (game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
-		&& game->map.floor >= 1 && game->map.walls >= 1 && game->map.rolls >= 2)
+		&& game->map.floor >= 1 && game->map.walls >= 1 && game->map.rows >= 2
+		&& check_colluns(game) == 1)
 		init_mlx();
 	else
-		printf("Mapa inválido\n");
-	close(game->fd);
+		ft_error("Mapa inválido\n");
 }

@@ -1,7 +1,7 @@
 NAME = so_long
 INCLUDE = -I ./src/ -I $(LIBMLX)/include/MLX42
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 
 MLX = ./MLX42/build/libmlx42.a 	
 LIBFT = ./libft/libft.a
@@ -34,7 +34,7 @@ $(LIBFT):
 	make -C ./libft
 
 $(MLX):
-	cmake -S ./MLX42 -B ./MLX42/build
+	cmake -S ./MLX42 -B ./MLX42/build -DDEBUG=1
 	cmake --build ./MLX42/build -j4
 
 clean: 

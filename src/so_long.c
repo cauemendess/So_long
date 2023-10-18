@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-
 void	keyhooks(mlx_key_data_t keydata, void *param)
 {
 	param = NULL;
@@ -51,8 +50,8 @@ int	main(int argc, char **argv)
 	game.fd = open(argv[1], O_RDONLY);
 	arguments_check(argc, argv);
 	initialize_value(&game);
-	validate_map(&game);
-
+	init_map_matrice(&game);
+	init_layer(&game);
 
 	return (EXIT_SUCCESS);
 }

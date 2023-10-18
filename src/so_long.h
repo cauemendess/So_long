@@ -31,7 +31,7 @@ typedef struct s_map
 	char	**matrice;
 	int		player;
 	int		colluns;
-	int		rolls;
+	int		rows;
 	int		coin;
 	int		exits;
 	int		floor;
@@ -48,9 +48,9 @@ typedef struct s_game
 }			t_game;
 
 void		initialize_value(t_game *game);
-void		validate_map(t_game *game);
+void		init_map_matrice(t_game *game);
+void		init_layer(t_game *game);
 void		init_mlx(void);
 void		ft_error(char *message);
-
 
 #endif

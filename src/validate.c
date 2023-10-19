@@ -28,7 +28,7 @@ void	define_map_struct(t_game *game, char c)
 {
 	if (ft_strchr("PEC01", c) == NULL)
 		//Deve fechar o mapa e dar free na matriz
-		ft_error("Caractér inválido encontrado\n");
+		ft_error("Caractér inválido encontrado\n", game);
 	if (c == CHAR_PLAYER)
 		game->map.player++;
 	else if (c == CHAR_EXIT)
@@ -54,15 +54,14 @@ int	check_colluns(t_game *game)
 			return (0);
 		i++;
 	}
+	game->map.columns = first_line_len;
 	return (1);
 }
 
 void	validate_map(t_game *game)
 {
-	if (game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
+	if (!(game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
 		&& game->map.floor >= 1 && game->map.walls >= 1 && game->map.rows >= 2
-		&& check_colluns(game) == 1)
-		init_mlx();
-	else
-		ft_error("Mapa inválido\n");
+		&& check_colluns(game) == 1))
+		ft_error("Mapa inválido\n", game);
 }

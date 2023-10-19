@@ -1,8 +1,15 @@
 #include "so_long.h"
 
-void	ft_error(char *message)
+void	ft_error(char *message, t_game *game)
 {
 	ft_putstr_fd(message, STDOUT_FILENO);
+	if(game->map.matrice != NULL)
+	{
+		ft_putnbr_fd(game->map.rows, 1);
+		ft_putstr_fd("Aqui\n", 1);
+
+		ft_free_map(game);
+	}
 	exit(EXIT_FAILURE);
 }
 

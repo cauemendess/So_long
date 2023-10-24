@@ -21,11 +21,11 @@
 # define PLAYER_FRONT "./assets/bonecodefrentex.png"
 # define MAPS "./maps/"
 
-typedef struct s_position
+typedef struct s_pos
 {
 	int				x;
 	int				y;
-}					s_position;
+}					t_pos;
 
 typedef struct s_map
 {
@@ -37,6 +37,7 @@ typedef struct s_map
 	int				exits;
 	int				floor;
 	int				walls;
+	t_pos		player_pos;
 
 }					t_map;
 
@@ -53,17 +54,19 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	int				fd;
+	char			*map_name;
 	t_map			map;
 	t_tiles			tiles;
-	bool			map_alloc;
 
 }					t_game;
 
 void				initialize_value(t_game *game);
+bool				valid_empty_map(t_game *game);
 void				init_map_matrice(t_game *game);
 void				init_layer(t_game *game);
 void				init_mlx(t_game *game);
 void				ft_error(char *message, t_game *game);
+void				ft_error_message(char *message);
 void				ft_free_map(t_game *game);
 
 #endif

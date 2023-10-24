@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void initialize_value(t_game *game)
+void	initialize_value(t_game *game)
 {
 	game->map.player = 0;
 	game->map.columns = 0;
@@ -9,7 +9,6 @@ void initialize_value(t_game *game)
 	game->map.exits = 0;
 	game->map.floor = 0;
 	game->map.walls = 0;
-	game->map_alloc = false;
 }
 
 void	init_map_matrice(t_game *game)
@@ -17,7 +16,9 @@ void	init_map_matrice(t_game *game)
 	char	*map;
 	char	*line;
 	char	*temp;
+	int		i;
 
+	i = 0;
 	map = ft_strdup("");
 	while (1)
 	{
@@ -26,13 +27,14 @@ void	init_map_matrice(t_game *game)
 			break ;
 		temp = map;
 		map = ft_strjoin(map, line);
-		game->map.rows++;
 		free(line);
 		free(temp);
 	}
 	game->map.matrice = ft_split(map, '\n');
-	game->map_alloc = true;
+	while (game->map.matrice[i++])
+		game->map.rows++;
+	if (!(game->map.matrice[0]))
+		ft_error("Mapa vazio!\n", game);
 	free(map);
 	close(game->fd);
 }
-

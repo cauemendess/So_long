@@ -30,26 +30,27 @@ void	init_mlx(t_game *game)
 	
 }
 
-void	arguments_check(int ac, char **av, t_game *game)
+void	arguments_check(int ac, char **av)
 {
 	int map_param_len;
 	
 	if(ac > 2)
-		ft_error("Muitos argumentos\n", game);
+		ft_error_message("Muitos argumentos\n");
 	if(ac < 2)
-		ft_error("Poucos argumentos\n", game);
+		ft_error_message("Poucos argumentos\n");
 	map_param_len = ft_strlen(av[1]);
 	if (!ft_strnstr(&av[1][map_param_len - 4], ".ber", 4))
-		ft_error("Tem que ter (.ber) no arquivo\n", game);
-	
+		ft_error_message("Tem que ter (.ber) no arquivo\n");
 }
 
 
 int	main(int argc, char **argv)
 {
 	t_game game;
-	game.fd = open(argv[1], O_RDONLY);
-	arguments_check(argc, argv, &game);
+	
+	game.map_name = argv[1];
+	game.fd = open(game.map_name, O_RDONLY);
+	arguments_check(argc, argv);
 	initialize_value(&game);
 	init_map_matrice(&game);
 	init_layer(&game);

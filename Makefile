@@ -17,7 +17,7 @@ GREEN = \033[1;32m
 RED = \033[1;31m
 RESET = \033[0m
 
-SOURCES = $(addprefix src/, so_long.c initialize_game.c validate.c error.c)
+SOURCES = $(addprefix src/, so_long.c initialize_game.c validate.c error.c check_path.c)
 
 OBJECTS = $(SOURCES:%.c=%.o)
 

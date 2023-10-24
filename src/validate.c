@@ -1,9 +1,10 @@
 #include "so_long.h"
 
 void	init_map_matrice(t_game *game);
-void	define_map_struct(t_game *game, char c);
-int		check_colluns(t_game *game);
+void	define_map_struct(t_game *game, char c, int y, int x);
+int		columns_len(t_game *game);
 void	validate_map(t_game *game);
+void	check_walls(t_game *game);
 
 void	init_layer(t_game *game)
 {
@@ -15,22 +16,28 @@ void	init_layer(t_game *game)
 	{
 		x = 0;
 		while (game->map.matrice[y][x])
-		{
-			define_map_struct(game, game->map.matrice[y][x]);
+		{	
 			x++;
+			define_map_struct(game, game->map.matrice[y][x], y, x);
 		}
 		y++;
 	}
+	columns_len(game);
 	validate_map(game);
+	check_walls(game);
+
 }
 
-void	define_map_struct(t_game *game, char c)
+void	define_map_struct(t_game *game, char c, int y, int x)
 {
 	if (ft_strchr("PEC01", c) == NULL)
-		//Deve fechar o mapa e dar free na matriz
 		ft_error("Caractér inválido encontrado\n", game);
 	if (c == CHAR_PLAYER)
+	{
 		game->map.player++;
+		game->map.player_pos = (t_pos){y, x};
+		printf("%d\n", game->map.player_pos.x);
+	}
 	else if (c == CHAR_EXIT)
 		game->map.exits++;
 	else if (c == CHAR_COIN)
@@ -41,7 +48,7 @@ void	define_map_struct(t_game *game, char c)
 		game->map.walls++;
 }
 
-int	check_colluns(t_game *game)
+int	columns_len(t_game *game)
 {
 	size_t	first_line_len;
 	size_t	i;
@@ -58,10 +65,36 @@ int	check_colluns(t_game *game)
 	return (1);
 }
 
+void	check_walls(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < game->map.rows)
+	{
+		if (game->map.matrice[i][0] != CHAR_WALL)
+			ft_error("O mapa tá aberto na primeira coluna\n", game);
+		else if (game->map.matrice[i][game->map.columns - 1] != CHAR_WALL)
+			ft_error("O mapa tá aberto na ultima coluna\n", game);
+		i++;
+	}
+	while (j < game->map.columns)
+	{
+		if (game->map.matrice[0][j] != CHAR_WALL)
+			ft_error("O mapa tá aberto na primeira linha\n", game);
+		else if (game->map.matrice[game->map.rows - 1][j] != CHAR_WALL)
+			ft_error("O mapa tá aberto na ultima linha\n", game);
+		j++;
+	}
+}
+
 void	validate_map(t_game *game)
 {
+
 	if (!(game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
-		&& game->map.floor >= 1 && game->map.walls >= 1 && game->map.rows >= 2
-		&& check_colluns(game) == 1))
-		ft_error("Mapa inválido\n", game);
+			&& game->map.floor >= 1 && game->map.walls >= 1
+			&& game->map.rows >= 3 && game->map.columns >= 3))
+			ft_error("Mapa inválido!\n", game);
 }

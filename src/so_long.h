@@ -13,6 +13,7 @@
 # define CHAR_FLOOR '0'
 # define CHAR_EXIT 'E'
 # define CHAR_COIN 'C'
+# define CHAR_VISITED 'V'
 
 # define WIDTH 72
 # define HEIGHT 72
@@ -30,6 +31,7 @@ typedef struct s_pos
 typedef struct s_map
 {
 	char			**matrice;
+	char			**matrice_fill;
 	int				player;
 	int				columns;
 	int				rows;
@@ -37,7 +39,7 @@ typedef struct s_map
 	int				exits;
 	int				floor;
 	int				walls;
-	t_pos		player_pos;
+	t_pos			player_pos;
 
 }					t_map;
 
@@ -61,12 +63,12 @@ typedef struct s_game
 }					t_game;
 
 void				initialize_value(t_game *game);
-bool				valid_empty_map(t_game *game);
 void				init_map_matrice(t_game *game);
+void				check_path(t_game *game);
 void				init_layer(t_game *game);
 void				init_mlx(t_game *game);
 void				ft_error(char *message, t_game *game);
 void				ft_error_message(char *message);
-void				ft_free_map(t_game *game);
+void				ft_free_map(t_game *game, int choise);
 
 #endif

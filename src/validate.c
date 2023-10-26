@@ -25,6 +25,7 @@ void	init_layer(t_game *game)
 	columns_len(game);
 	validate_map(game);
 	check_walls(game);
+	check_path(game);
 
 }
 
@@ -36,7 +37,6 @@ void	define_map_struct(t_game *game, char c, int y, int x)
 	{
 		game->map.player++;
 		game->map.player_pos = (t_pos){y, x};
-		printf("%d\n", game->map.player_pos.x);
 	}
 	else if (c == CHAR_EXIT)
 		game->map.exits++;

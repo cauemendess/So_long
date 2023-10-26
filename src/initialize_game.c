@@ -31,6 +31,7 @@ void	init_map_matrice(t_game *game)
 		free(temp);
 	}
 	game->map.matrice = ft_split(map, '\n');
+	game->map.matrice_fill = ft_split(map, '\n');
 	while (game->map.matrice[i++])
 		game->map.rows++;
 	if (!(game->map.matrice[0]))
@@ -38,3 +39,5 @@ void	init_map_matrice(t_game *game)
 	free(map);
 	close(game->fd);
 }
+
+

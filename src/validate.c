@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/10/31 16:43:25 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	init_map_matrice(t_game *game);
@@ -16,7 +28,7 @@ void	init_layer(t_game *game)
 	{
 		x = 0;
 		while (game->map.matrice[y][x])
-		{	
+		{
 			x++;
 			define_map_struct(game, game->map.matrice[y][x], y, x);
 		}
@@ -26,7 +38,6 @@ void	init_layer(t_game *game)
 	validate_map(game);
 	check_walls(game);
 	check_path(game);
-
 }
 
 void	define_map_struct(t_game *game, char c, int y, int x)
@@ -36,7 +47,7 @@ void	define_map_struct(t_game *game, char c, int y, int x)
 	if (c == CHAR_PLAYER)
 	{
 		game->map.player++;
-		game->map.player_pos = (t_pos){y, x};
+		game->map.player_pos = (t_pos){x, y};
 	}
 	else if (c == CHAR_EXIT)
 		game->map.exits++;
@@ -92,9 +103,8 @@ void	check_walls(t_game *game)
 
 void	validate_map(t_game *game)
 {
-
 	if (!(game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
 			&& game->map.floor >= 1 && game->map.walls >= 1
 			&& game->map.rows >= 3 && game->map.columns >= 3))
-			ft_error("Mapa inválido!\n", game);
+		ft_error("Mapa inválido!\n", game);
 }

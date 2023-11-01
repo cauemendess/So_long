@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/31 16:43:09 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/10/31 16:43:10 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	keyhooks(mlx_key_data_t keydata, void *param)
@@ -27,7 +39,6 @@ void	init_mlx(t_game *game)
 
 	mlx = mlx_init(game->map.columns * WIDTH, game->map.rows * HEIGHT, "so long", true);
 	image_init(mlx);
-	
 }
 
 void	arguments_check(int ac, char **av)

@@ -1,54 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/31 16:42:50 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/11/01 14:43:58 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void print_map(char **str, t_game *game);
+void	print_map(t_game *game);
 
-bool	flood_fill(t_game *game, t_pos curr)
+t_bool	flood_fill(t_game *game, int y, int x)
 {
-	bool	found_exit;
-	int		coins;
+	t_bool		found_exit;
 
-	found_exit = false;
-	coins = 0;
-	if (curr.x < 0 || curr.x >= game->map.columns || curr.y < 0
-		|| curr.y >= game->map.rows)
+	found_exit = FALSE;
+	if (x >= 0 || y >= 0 || y < game->map.rows || x < game->map.columns)
 	{
-		return (false);
+		if (game->map.matrice_fill[y][x] == CHAR_WALL
+			|| game->map.matrice_fill[y][x] == 'X')
+			return (FALSE);
+		if (game->map.matrice_fill[y][x] == CHAR_FLOOR)
+			game->map.matrice_fill[y][x] = 'X';
+		else if (game->map.matrice_fill[y][x] == CHAR_COIN)
+			game->map.matrice_fill[y][x] = 'X';
+		else if (game->map.matrice_fill[y][x] == 'E')
+			found_exit = TRUE;
+		if (flood_fill(game, y, x + 1) || flood_fill(game, y, x - 1)
+			|| flood_fill(game, y + 1, x) || flood_fill(game, y - 1, x))
+			found_exit = TRUE;
 	}
-	//if (game->map.matrice_fill[curr.y][curr.x] == CHAR_WALL)
-	//	found_exit = false;
-	//else if (game->map.matrice_fill[curr.y][curr.x] == CHAR_COIN)
-	//	coins++;
-	//else if (game->map.matrice_fill[curr.y][curr.x] == CHAR_EXIT)
-	//	found_exit = true;
-	game->map.matrice_fill[curr.y][curr.x] = CHAR_VISITED;
-	system("clear");
-	print_map(game->map.matrice_fill, game);
-	sleep(1);
-	flood_fill(game, (t_pos){curr.x + 1, curr.y});
-	flood_fill(game, (t_pos){curr.x - 1, curr.y});
-	flood_fill(game, (t_pos){curr.x, curr.y + 1});
-	flood_fill(game, (t_pos){curr.x, curr.y - 1});
-	return (coins == game->map.coin && found_exit);
+
+	return (found_exit);
 }
 
 void	check_path(t_game *game)
 {
-	flood_fill(game, game->map.player_pos);
-	//if (!flood_fill(game, game->map.player_pos))
-	//{
-	//	printf("%d", flood_fill(game, game->map.player_pos));
-	//	ft_error("Não existe um caminho até a saída\n", game);
-	//}
+	if (!flood_fill(game, game->map.player_pos.y, game->map.player_pos.x))
+	{
+		print_map(game);
+		ft_error("Não existe um caminho até a saída\n", game);
+	}
+	print_map(game);
 	ft_free_map(game, 0);
 }
-
-void print_map(char **str, t_game *game)
+// Função de teste
+void	print_map(t_game *game)
 {
-	for(int i = 0 ;i < game->map.columns; i++)
+	for (int i = 0; i < game->map.rows; i++)
 	{
-		for(int j=0 ;j < game->map.rows; j++)
+		for (int j = 0; j < game->map.columns; j++)
 		{
-			printf("%c ", str[i][j]);
+			printf("%c ", game->map.matrice_fill[i][j]);
 		}
 		printf("\n");
 	}

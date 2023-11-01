@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/11/01 14:44:39 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -13,7 +25,6 @@
 # define CHAR_FLOOR '0'
 # define CHAR_EXIT 'E'
 # define CHAR_COIN 'C'
-# define CHAR_VISITED 'V'
 
 # define WIDTH 72
 # define HEIGHT 72
@@ -21,6 +32,12 @@
 // assets
 # define PLAYER_FRONT "./assets/bonecodefrentex.png"
 # define MAPS "./maps/"
+
+typedef enum e_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 typedef struct s_pos
 {
@@ -61,6 +78,8 @@ typedef struct s_game
 	t_tiles			tiles;
 
 }					t_game;
+
+
 
 void				initialize_value(t_game *game);
 void				init_map_matrice(t_game *game);

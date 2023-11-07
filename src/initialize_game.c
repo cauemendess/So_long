@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:05 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/01 14:27:39 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:17:14 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	initialize_value(t_game *game)
 	game->map.exits = 0;
 	game->map.floor = 0;
 	game->map.walls = 0;
+	game->count = 0;
 }
 
 void	init_map_matrice(t_game *game)
@@ -47,7 +48,8 @@ void	init_map_matrice(t_game *game)
 	while (game->map.matrice[i++])
 		game->map.rows++;
 	if (!(game->map.matrice[0]))
-		ft_error("Mapa vazio!\n", game);
+		ft_error("Error, empty map!\n", game);
 	free(map);
 	close(game->fd);
 }
+

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:42:56 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/10/31 16:42:57 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:08:21 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_error_message(char *message)
 	ft_putstr_fd(message, STDOUT_FILENO);
 	exit(1);
 }
-
 void	ft_error(char *message, t_game *game)
 {
 	ft_putstr_fd(message, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/10/31 16:43:25 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:20:49 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_layer(t_game *game)
 void	define_map_struct(t_game *game, char c, int y, int x)
 {
 	if (ft_strchr("PEC01", c) == NULL)
-		ft_error("Caractér inválido encontrado\n", game);
+		ft_error("Error, invalid character found!\n", game);
 	if (c == CHAR_PLAYER)
 	{
 		game->map.player++;
@@ -86,17 +86,17 @@ void	check_walls(t_game *game)
 	while (i < game->map.rows)
 	{
 		if (game->map.matrice[i][0] != CHAR_WALL)
-			ft_error("O mapa tá aberto na primeira coluna\n", game);
+			ft_error("Error, the map is open in the first column!\n", game);
 		else if (game->map.matrice[i][game->map.columns - 1] != CHAR_WALL)
-			ft_error("O mapa tá aberto na ultima coluna\n", game);
+			ft_error("Error, the map is open in the last column!\n", game);
 		i++;
 	}
 	while (j < game->map.columns)
 	{
 		if (game->map.matrice[0][j] != CHAR_WALL)
-			ft_error("O mapa tá aberto na primeira linha\n", game);
+			ft_error("Error, the map is open in the first line!\n", game);
 		else if (game->map.matrice[game->map.rows - 1][j] != CHAR_WALL)
-			ft_error("O mapa tá aberto na ultima linha\n", game);
+			ft_error("Error, the map is open in the last line!\n", game);
 		j++;
 	}
 }
@@ -106,5 +106,5 @@ void	validate_map(t_game *game)
 	if (!(game->map.player == 1 && game->map.exits == 1 && game->map.coin >= 1
 			&& game->map.floor >= 1 && game->map.walls >= 1
 			&& game->map.rows >= 3 && game->map.columns >= 3))
-		ft_error("Mapa inválido!\n", game);
+		ft_error("Invalid map!\n", game);
 }

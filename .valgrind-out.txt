@@ -1,0 +1,293 @@
+==63360== Memcheck, a memory error detector
+==63360== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==63360== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==63360== Command: ./so_long ./maps/mapa_quadrado.ber
+==63360== Parent PID: 9494
+==63360== 
+--63360-- 
+--63360-- Valgrind options:
+--63360--    --leak-check=full
+--63360--    --show-leak-kinds=all
+--63360--    --track-origins=yes
+--63360--    --verbose
+--63360--    --log-file=.valgrind-out.txt
+--63360--    --suppressions=sup.sup
+--63360--    -s
+--63360-- Contents of /proc/version:
+--63360--   Linux version 5.4.0-166-generic (buildd@lcy02-amd64-011) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2)) #183-Ubuntu SMP Mon Oct 2 11:28:33 UTC 2023
+--63360-- 
+--63360-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--63360-- Page sizes: currently 4096, max supported 4096
+--63360-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--63360-- Reading syms from /nfs/homes/csilva-m/Projetos_Fase1/So_long/so_long
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--63360--    object doesn't have a symbol table
+--63360--    object doesn't have a dynamic symbol table
+--63360-- Scheduler: using generic scheduler lock implementation.
+--63360-- Reading suppressions file: sup.sup
+--63360-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==63360== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-63360-by-csilva-m-on-???
+==63360== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-63360-by-csilva-m-on-???
+==63360== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-63360-by-csilva-m-on-???
+==63360== 
+==63360== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==63360== don't want to do, unless you know exactly what you're doing,
+==63360== or are doing some strange experiment):
+==63360==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=63360 ...command...
+==63360== 
+==63360== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==63360==   /path/to/gdb ./so_long
+==63360== and then give GDB the following command
+==63360==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=63360
+==63360== --pid is optional if only one valgrind process is running
+==63360== 
+--63360-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--63360-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--63360--    object doesn't have a symbol table
+==63360== WARNING: new redirection conflicts with existing -- ignoring it
+--63360--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--63360--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--63360-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--63360-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/c0/f40155b3f8bf8c494fa800f9ab197ebe20ed6e.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/fe/91b4090ea04c1559ff71dd9290062776618891.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/7b/4536f41cdaa5888408e82d0836e33dcf436466.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0
+--63360--   Considering /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0 ..
+--63360--   .. CRC mismatch (computed 7de9b6ad wanted e8a17129)
+--63360--   Considering /lib/x86_64-linux-gnu/libXau.so.6.0.0 ..
+--63360--   .. CRC mismatch (computed 7de9b6ad wanted e8a17129)
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libbsd.so.0.10.0
+--63360--    object doesn't have a symbol table
+--63360-- REDIR: 0x4ae3480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae37b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae20a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae27e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae4c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4affce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aff820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae35e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aff7e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae21d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4b00f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aff860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aebbb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae33d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aff930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae2ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae3750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae36f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae4c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae38a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4b70850 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4ae32f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4bcb500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--63360-- REDIR: 0x4add0e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--63360-- REDIR: 0x4add6d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--63360-- REDIR: 0x4bceb60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--63360-- REDIR: 0x4adeb10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--63360-- REDIR: 0x4bcb6d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--63360-- REDIR: 0x4bc7010 (libc.so.6:__strncmp_avx2) redirected to 0x483f670 (strncmp)
+--63360-- REDIR: 0x4bce6e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--63360-- REDIR: 0x4bcb310 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--63360-- REDIR: 0x4b70c00 (libc.so.6:__strcpy_chk) redirected to 0x48435c0 (__strcpy_chk)
+--63360-- REDIR: 0x4ae2fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--63360-- REDIR: 0x4bc7cc0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--63360-- REDIR: 0x4bce6c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--63360-- REDIR: 0x4adde80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--63360-- REDIR: 0x4bccfa0 (libc.so.6:__strncpy_avx2) redirected to 0x483f230 (strncpy)
+--63360-- REDIR: 0x4afe3f0 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x4843c20 (strstr)
+--63360-- REDIR: 0x4bcb0e0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+--63360-- REDIR: 0x4bc7530 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--63360-- REDIR: 0x4bc6bd0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--63360-- REDIR: 0x4bccc10 (libc.so.6:__strcpy_avx2) redirected to 0x483f090 (strcpy)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+--63360--   Considering /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 ..
+--63360--   .. CRC mismatch (computed 7e27e1ef wanted 4ab025b2)
+--63360--   Considering /lib/x86_64-linux-gnu/libXext.so.6.4.0 ..
+--63360--   .. CRC mismatch (computed 7e27e1ef wanted 4ab025b2)
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- REDIR: 0x4bce6d0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4843b10 (__memcpy_chk)
+--63360-- REDIR: 0x4bc6820 (libc.so.6:__strcspn_sse42) redirected to 0x4843e10 (strcspn)
+--63360-- REDIR: 0x4bc6aa0 (libc.so.6:__strspn_sse42) redirected to 0x4843ef0 (strspn)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libGL.so.1.7.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libglapi.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-dri2.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-shm.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libexpat.so.1.6.11
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-present.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-sync.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxshmfence.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0.0.0
+--63360--    object doesn't have a symbol table
+--63360-- REDIR: 0x4bcd900 (libc.so.6:__stpcpy_avx2) redirected to 0x4842300 (stpcpy)
+--63360-- REDIR: 0x4bcb870 (libc.so.6:__strnlen_avx2) redirected to 0x483eee0 (strnlen)
+--63360-- REDIR: 0x4bc7800 (libc.so.6:__rawmemchr_avx2) redirected to 0x4843580 (rawmemchr)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/dri/iris_dri.so
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libLLVM-12.so.1
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libzstd.so.1.4.4
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libdrm_radeon.so.1.0.1
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libelf-0.176.so
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libdrm_nouveau.so.2.0.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libvulkan.so.1.2.131
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--63360--    object doesn't have a symbol table
+--63360-- REDIR: 0x40231e0 (ld-linux-x86-64.so.2:stpcpy) redirected to 0x4842710 (stpcpy)
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libffi.so.7.1.0
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libedit.so.2.0.63
+--63360--    object doesn't have a symbol table
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/librt-2.31.so
+--63360--   Considering /usr/lib/debug/.build-id/ce/016c975d94bc4770ed8c62d45dea6b71405a2c.debug ..
+--63360--   .. build-id is valid
+--63360-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+--63360--    object doesn't have a symbol table
+--63360-- REDIR: 0x4ae26b0 (libc.so.6:strncat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0x4aff9d0 (libc.so.6:wcsncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--63360-- REDIR: 0xd23eb10 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--63360-- REDIR: 0xd23cd60 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
+--63360-- REDIR: 0x4adf830 (libc.so.6:posix_memalign) redirected to 0x483e1e0 (posix_memalign)
+--63360-- WARNING: Serious error when reading debug info
+--63360-- When reading debug info from /memfd:xshmfence (deleted):
+--63360-- failed to stat64/stat this file
+--63360-- REDIR: 0xd23cd70 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x483d160 (operator delete(void*, unsigned long))
+--63360-- REDIR: 0xd23eb70 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--63360-- REDIR: 0xd23cd90 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
+--63360-- REDIR: 0xd23cda0 (libstdc++.so.6:operator delete[](void*, unsigned long)) redirected to 0x483d8f0 (operator delete[](void*, unsigned long))
+--63360-- WARNING: Serious error when reading debug info
+--63360-- When reading debug info from /memfd:xshmfence (deleted):
+--63360-- failed to stat64/stat this file
+--63360-- Discarding syms at 0x5413660-0x5418288 in /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2 (have_dinfo 1)
+--63360-- Discarding syms at 0x51fb360-0x52016b9 in /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x54260f0-0x5426a31 in /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5207a60-0x520dab5 in /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x51e9460-0x51f3d1b in /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x58721c0-0x587501d in /usr/lib/x86_64-linux-gnu/libGL.so.1.7.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5972700-0x598c48c in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x58f7240-0x58f94eb in /usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x59bdd80-0x59ff382 in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x542b040-0x542b11f in /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x541f300-0x54216ea in /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x51cc240-0x51ce9f9 in /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x51d65e0-0x51e084e in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5a780a0-0x5a80b29 in /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5a8c0a0-0x5a8d309 in /usr/lib/x86_64-linux-gnu/libxcb-dri2.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5a920e0-0x5a92c37 in /usr/lib/x86_64-linux-gnu/libxcb-shm.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5ac60e0-0x5ac6fd7 in /usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5acb0a0-0x5acb97a in /usr/lib/x86_64-linux-gnu/libxcb-present.so.0.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5ad2100-0x5ad4416 in /usr/lib/x86_64-linux-gnu/libxcb-sync.so.1.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5ad9960-0x5ad9c2c in /usr/lib/x86_64-linux-gnu/libxshmfence.so.1.0.0 (have_dinfo 1)
+--63360-- Discarding syms at 0x5cde0a0-0x5ce08de in /usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0.0.0 (have_dinfo 1)
+==63360== 
+==63360== HEAP SUMMARY:
+==63360==     in use at exit: 288,426 bytes in 2,773 blocks
+==63360==   total heap usage: 64,460 allocs, 61,687 frees, 16,788,474 bytes allocated
+==63360== 
+==63360== Searching for pointers to 2,773 not-freed blocks
+==63360== Checked 4,617,368 bytes
+==63360== 
+==63360== LEAK SUMMARY:
+==63360==    definitely lost: 0 bytes in 0 blocks
+==63360==    indirectly lost: 0 bytes in 0 blocks
+==63360==      possibly lost: 0 bytes in 0 blocks
+==63360==    still reachable: 0 bytes in 0 blocks
+==63360==         suppressed: 288,426 bytes in 2,773 blocks
+==63360== 
+==63360== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+--63360-- 
+--63360-- used_suppression:   1949 <MLX_CODAM> sup.sup:2 suppressed: 247,659 bytes in 2,019 blocks
+--63360-- used_suppression:      9 <MLX_CODAM> sup.sup:10 suppressed: 17,820 bytes in 263 blocks
+--63360-- used_suppression:     64 <MLX_CODAM> sup.sup:26 suppressed: 16,078 bytes in 399 blocks
+--63360-- used_suppression:      1 <MLX_CODAM> sup.sup:34 suppressed: 1,692 bytes in 1 blocks
+--63360-- used_suppression:     91 <MLX_CODAM> sup.sup:42 suppressed: 5,177 bytes in 91 blocks
+--63360-- used_suppression:      2 dl-hack4-64bit-addr-1 /usr/lib/x86_64-linux-gnu/valgrind/default.supp:1277
+==63360== 
+==63360== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)

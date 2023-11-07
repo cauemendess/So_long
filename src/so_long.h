@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/01 14:44:39 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:06:10 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@
 # define CHAR_EXIT 'E'
 # define CHAR_COIN 'C'
 
-# define WIDTH 72
-# define HEIGHT 72
+# define WIDTH 64
+# define HEIGHT 64
 
 // assets
+# define WALL_PNG "./assets/walls_teste.png"
+# define FLOOR_PNG "./assets/floor_teste.png"
 # define PLAYER_FRONT "./assets/bonecodefrentex.png"
 # define MAPS "./maps/"
 
@@ -37,7 +39,15 @@ typedef enum e_bool
 {
 	FALSE,
 	TRUE
-}	t_bool;
+}					t_bool;
+
+typedef struct s_image
+{
+	mlx_image_t		*floor;
+	mlx_image_t		*wall;
+	mlx_image_t		*player;
+
+}					t_image;
 
 typedef struct s_pos
 {
@@ -76,16 +86,21 @@ typedef struct s_game
 	char			*map_name;
 	t_map			map;
 	t_tiles			tiles;
+	t_image			img;
+	int				count;
 
 }					t_game;
-
-
 
 void				initialize_value(t_game *game);
 void				init_map_matrice(t_game *game);
 void				check_path(t_game *game);
 void				init_layer(t_game *game);
 void				init_mlx(t_game *game);
+void				place_texture(t_game *game);
+void				render_floor(t_game *game);
+void				my_image_to_window(t_game *game, mlx_image_t *mlx_image,
+						int x, int y);
+void				place_texture(t_game *game);
 void				ft_error(char *message, t_game *game);
 void				ft_error_message(char *message);
 void				ft_free_map(t_game *game, int choise);

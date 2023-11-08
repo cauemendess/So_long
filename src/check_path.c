@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:42:50 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/07 15:09:30 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:33:48 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	check_path(t_game *game)
 		ft_error("Não existe um caminho até a saída\n", game);
 	}
 
-	ft_free_map(game, 1);
+	ft_free_map(game, 0);
 }
 

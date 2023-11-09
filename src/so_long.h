@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/08 17:08:48 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:32:50 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@
 # define HEIGHT 64
 
 // assets
-# define WALL_PNG "./assets/wall_pokemon64.png"
+# define WALL_PNG "./assets/wall_pokemon.png"
 # define FLOOR_PNG "./assets/floor_pokemon64.png"
-# define PLAYER_PNG "./assets/bonecodefrentex.png"
+# define COIN_PNG "./assets/colectable.png"
+# define EXIT_PNG "./assets/exit_pokemon.png"
+# define PLAYER_PNG "./assets/snorlax_side.png"
 # define MAPS "./maps/"
 
 typedef enum e_bool
@@ -46,6 +48,8 @@ typedef struct s_image
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*player;
+	mlx_image_t		*coin;
+	mlx_image_t		*exit;
 
 }					t_image;
 
@@ -76,6 +80,7 @@ typedef struct s_tiles
 	mlx_texture_t	*walls;
 	mlx_texture_t	*coin;
 	mlx_texture_t	*player;
+	mlx_texture_t	*exit;
 
 }					t_tiles;
 
@@ -89,6 +94,7 @@ typedef struct s_game
 	t_image			img;
 	int				count;
 
+
 }					t_game;
 
 void				initialize_value(t_game *game);
@@ -98,13 +104,11 @@ void				init_layer(t_game *game);
 void				init_mlx(t_game *game);
 void				image_init(t_game *game);
 void				render_floor(t_game *game);
-void				my_image_to_window(t_game *game, mlx_image_t *mlx_image,
-						int x, int y);
 void				place_texture(t_game *game);
 void				keyhooks(mlx_key_data_t keydata, void *param);
 void				delete_image(t_game *game);
 void				ft_error(char *message, t_game *game);
 void				ft_error_message(char *message);
-void				ft_free_map(t_game *game, int choise);
+void				ft_free_map(char **matriz);
 
 #endif

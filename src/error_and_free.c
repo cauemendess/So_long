@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:42:56 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/07 15:08:21 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:32:18 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@ void	ft_error(char *message, t_game *game)
 {
 	ft_putstr_fd(message, STDOUT_FILENO);
 	if (game->map.matrice != NULL || game->map.matrice_fill != NULL)
-		ft_free_map(game, 1);
+	{
+		ft_free_map(game->map.matrice);
+		ft_free_map(game->map.matrice_fill);
+	}
 	exit(1);
 }
 
-void	ft_free_map(t_game *game, int choise)
+void	ft_free_map(char **matriz)
 {
 	int	i;
 
 	i = 0;
-	while (i < game->map.rows)
+	while (matriz[i])
 	{
-		free(game->map.matrice_fill[i]);
-		if (choise == 1)
-			free(game->map.matrice[i]);
+		free(matriz[i]);
 		i++;
 	}
-	free(game->map.matrice_fill);
-	if (choise == 1)
-		free(game->map.matrice);
+	free(matriz);
+
 }
+

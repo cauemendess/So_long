@@ -17,12 +17,6 @@
 {
  <MLX_CODAM>
    Memcheck:Leak
-   ...
-   fun:???
-}
-{
- <MLX_CODAM>
-   Memcheck:Leak
    match-leak-kinds: reachable
    ...
    fun:XrmGetStringDatabase

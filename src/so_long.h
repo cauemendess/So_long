@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/09 17:32:50 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/10 15:50:16 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@
 # define FLOOR_PNG "./assets/floor_pokemon64.png"
 # define COIN_PNG "./assets/colectable.png"
 # define EXIT_PNG "./assets/exit_pokemon.png"
-# define PLAYER_PNG "./assets/snorlax_side.png"
+# define FRONT_PNG "./assets/snorlax_front.png"
+# define BACK_PNG "./assets/snorlax_back.png"
+# define LEFT_PNG "./assets/snorlax_left.png"
+# define RIGHT_PNG "./assets/snorlax_right.png"
+
 # define MAPS "./maps/"
 
 typedef enum e_bool
@@ -43,12 +47,16 @@ typedef enum e_bool
 	TRUE
 }					t_bool;
 
+typedef struct s_mult
+{
+	mlx_image_t		*image;
+	mlx_texture_t	*texture;
+}					t_mult;
+
 typedef struct s_image
 {
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
-	mlx_image_t		*player;
-	mlx_image_t		*coin;
 	mlx_image_t		*exit;
 
 }					t_image;
@@ -78,8 +86,6 @@ typedef struct s_tiles
 {
 	mlx_texture_t	*floor;
 	mlx_texture_t	*walls;
-	mlx_texture_t	*coin;
-	mlx_texture_t	*player;
 	mlx_texture_t	*exit;
 
 }					t_tiles;
@@ -93,6 +99,8 @@ typedef struct s_game
 	t_tiles			tiles;
 	t_image			img;
 	int				count;
+	t_mult			player[4];
+	t_mult			coin[100000];
 
 
 }					t_game;

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/02 15:20:49 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:50:31 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	init_layer(t_game *game)
 		x = 0;
 		while (game->map.matrice[y][x])
 		{
-			x++;
 			define_map_struct(game, game->map.matrice[y][x], y, x);
+			x++;
 		}
 		y++;
 	}
-	columns_len(game);
+	columns_len(game);	
 	validate_map(game);
 	check_walls(game);
 	check_path(game);

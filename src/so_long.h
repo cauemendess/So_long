@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/10 15:50:16 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:14:32 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_mult
 {
 	mlx_image_t		*image;
 	mlx_texture_t	*texture;
+	int				x;
+	int				y;
 }					t_mult;
 
 typedef struct s_image
@@ -101,7 +103,6 @@ typedef struct s_game
 	int				count;
 	t_mult			player[4];
 	t_mult			coin[100000];
-
 
 }					t_game;
 

@@ -3,7 +3,7 @@ INCLUDE = -I ./src/ -I $(LIBMLX)/include/MLX42
 
 CFLAGS = -Wall -Werror -Wextra -g3
 
-MLX = ./MLX42/build/libmlx42.a 	
+MLX = ./MLX42/build/libmlx42.a
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft/
 

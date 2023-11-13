@@ -6,14 +6,17 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:05 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/07 17:17:14 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:59:25 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	initialize_value(t_game *game)
+t_game	*initialize_value(void)
 {
+	t_game	*game;
+
+	game = (t_game *)malloc(sizeof(t_game));
 	game->map.player = 0;
 	game->map.columns = 0;
 	game->map.rows = 0;
@@ -22,7 +25,9 @@ void	initialize_value(t_game *game)
 	game->map.floor = 0;
 	game->map.walls = 0;
 	game->count = 0;
+	return (game);
 }
+
 
 void	init_map_matrice(t_game *game)
 {

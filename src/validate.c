@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/12 17:50:31 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:19:51 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_layer(t_game *game)
 		while (game->map.matrice[y][x])
 		{
 			define_map_struct(game, game->map.matrice[y][x], y, x);
-			x++;
+			++x;
 		}
 		y++;
 	}
@@ -39,6 +39,7 @@ void	init_layer(t_game *game)
 	check_walls(game);
 	check_path(game);
 }
+
 
 void	define_map_struct(t_game *game, char c, int y, int x)
 {
@@ -50,7 +51,11 @@ void	define_map_struct(t_game *game, char c, int y, int x)
 		game->map.player_pos = (t_pos){x, y};
 	}
 	else if (c == CHAR_EXIT)
+	{
 		game->map.exits++;
+		game->map.exit_pos = (t_pos){x * 64, y * 64};
+		
+	}
 	else if (c == CHAR_COIN)
 		game->map.coin++;
 	else if (c == CHAR_FLOOR)

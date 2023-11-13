@@ -6,11 +6,13 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:42:50 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/09 17:33:14 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:55:08 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void print_filled_map(t_game *game);
 
 t_bool	flood_fill(t_game *game, int y, int x)
 {
@@ -39,5 +41,6 @@ void	check_path(t_game *game)
 {
 	if (!flood_fill(game, game->map.player_pos.y, game->map.player_pos.x))
 		ft_error("Não existe um caminho até a saída\n", game);
+	ft_free_map(game->map.matrice_fill);
 }
 

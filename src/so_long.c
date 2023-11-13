@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:09 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/09 17:39:16 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:27:53 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,24 @@ void	arguments_check(int ac, char **av)
 		ft_error_message("The file must to be a (.ber) file.\n");
 }
 
+
+
 int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game *game;
 	
-	game.map_name = argv[1];
-	game.fd = open(game.map_name, O_RDONLY);
+	game = initialize_value();
+	game->map_name = argv[1];
+	game->fd = open(game->map_name, O_RDONLY);
 	arguments_check(argc, argv);
-	initialize_value(&game);
-	init_map_matrice(&game);
-	init_layer(&game);
-	init_mlx(&game);
-	image_init(&game);
-	mlx_key_hook(game.mlx, &keyhooks, &game);
-	mlx_loop(game.mlx);
-	delete_image(&game);
-	ft_error("\n", &game);
+	init_map_matrice(game);
+	init_layer(game);
+	init_mlx(game);
+	image_init(game);
+	mlx_key_hook(game->mlx, &keyhooks, game);
+	mlx_loop(game->mlx);
+	delete_image(game);
+	ft_error("\n", game);
 
 	return (EXIT_SUCCESS);
 }

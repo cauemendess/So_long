@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/12 16:14:32 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:26:19 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_mult
 
 typedef struct s_image
 {
+	mlx_image_t		*player;
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*exit;
@@ -81,11 +82,13 @@ typedef struct s_map
 	int				floor;
 	int				walls;
 	t_pos			player_pos;
+	t_pos			exit_pos;
 
 }					t_map;
 
 typedef struct s_tiles
 {
+	mlx_texture_t	*player;
 	mlx_texture_t	*floor;
 	mlx_texture_t	*walls;
 	mlx_texture_t	*exit;
@@ -101,12 +104,16 @@ typedef struct s_game
 	t_tiles			tiles;
 	t_image			img;
 	int				count;
-	t_mult			player[4];
 	t_mult			coin[100000];
+	t_mult			player[5];
+	int				x;
+	int				y;
 
 }					t_game;
 
-void				initialize_value(t_game *game);
+t_game				*initialize_value(void);
+
+//void				initialize_value(t_game *game);
 void				init_map_matrice(t_game *game);
 void				check_path(t_game *game);
 void				init_layer(t_game *game);

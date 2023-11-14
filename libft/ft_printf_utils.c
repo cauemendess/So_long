@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_images.c                                    :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:07:39 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 19:44:39 by csilva-m         ###   ########.fr       */
+/*   Created: 2023/08/30 14:07:14 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/11/14 12:00:29 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-void	delete_image(t_game *game)
+size_t	ft_strlen_printf(const char *s)
 {
-	mlx_delete_image(game->mlx, game->img.floor);
-	mlx_delete_image(game->mlx, game->coin->image);
-	mlx_delete_image(game->mlx, game->img.wall);
-	mlx_delete_image(game->mlx, game->img.exit);
-	mlx_delete_image(game->mlx, game->player->image);
-	mlx_delete_image(game->mlx, game->img.enemy);
-	mlx_terminate(game->mlx);
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *str)
+{
+	int	len;
+
+	if (str == NULL)
+	{
+		return (ft_putstr("(null)"));
+	}
+	len = ft_strlen_printf(str);
+	write(1, str, len);
+	return (len);
 }

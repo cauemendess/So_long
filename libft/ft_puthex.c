@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_images.c                                    :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:07:39 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 19:44:39 by csilva-m         ###   ########.fr       */
+/*   Created: 2023/09/08 15:02:36 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/09/26 11:31:08 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-void	delete_image(t_game *game)
+int	ft_puthex(long int nb, char *base, char specifier)
 {
-	mlx_delete_image(game->mlx, game->img.floor);
-	mlx_delete_image(game->mlx, game->coin->image);
-	mlx_delete_image(game->mlx, game->img.wall);
-	mlx_delete_image(game->mlx, game->img.exit);
-	mlx_delete_image(game->mlx, game->player->image);
-	mlx_delete_image(game->mlx, game->img.enemy);
-	mlx_terminate(game->mlx);
+	int	len;
+
+	len = 0;
+	if (nb != 0)
+	{
+		if ((specifier == '#') && (base[15] == 'F'))
+			len += ft_putstr("0X");
+		else if ((specifier == '#') && (base[15] == 'f'))
+			len += ft_putstr("0x");
+	}
+	len += ft_putnbr_base(nb, base);
+	return (len);
 }

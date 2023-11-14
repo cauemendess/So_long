@@ -6,12 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:09 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/13 17:27:53 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:03:07 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	init_mlx(t_game *game)
 {
@@ -38,16 +37,14 @@ void	arguments_check(int ac, char **av)
 		ft_error_message("The file must to be a (.ber) file.\n");
 }
 
-
-
 int	main(int argc, char **argv)
 {
-	t_game *game;
-	
+	t_game	*game;
+
 	game = initialize_value();
+	arguments_check(argc, argv);
 	game->map_name = argv[1];
 	game->fd = open(game->map_name, O_RDONLY);
-	arguments_check(argc, argv);
 	init_map_matrice(game);
 	init_layer(game);
 	init_mlx(game);
@@ -55,16 +52,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->mlx, &keyhooks, game);
 	mlx_loop(game->mlx);
 	delete_image(game);
-	ft_error("\n", game);
-
+	ft_finish("", game);
 	return (EXIT_SUCCESS);
 }
-
-
-//void	clean_all(t_game *game)
-//{
-
-//	// fazer um arquivo só para deletar coisas da tela
-//	delete_all_images(game);
-//	mlx_terminate(game->mlx);
-//}

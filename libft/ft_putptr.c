@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_images.c                                    :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:07:39 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 19:44:39 by csilva-m         ###   ########.fr       */
+/*   Created: 2023/09/08 15:01:27 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/11/14 12:01:04 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-void	delete_image(t_game *game)
+int	ft_putptr(unsigned long nb, char *base)
 {
-	mlx_delete_image(game->mlx, game->img.floor);
-	mlx_delete_image(game->mlx, game->coin->image);
-	mlx_delete_image(game->mlx, game->img.wall);
-	mlx_delete_image(game->mlx, game->img.exit);
-	mlx_delete_image(game->mlx, game->player->image);
-	mlx_delete_image(game->mlx, game->img.enemy);
-	mlx_terminate(game->mlx);
+	unsigned long	base_len;
+	int				len;
+
+	len = 0;
+	base_len = ft_strlen_printf(base);
+	if (nb == 0)
+		return (ft_putstr("(nil)"));
+	if (nb < 0)
+	{
+		len += ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb >= base_len)
+		len += ft_putptr(nb / base_len, base);
+	else
+		len += ft_putstr("0x");
+	len += ft_putchar(base[nb % base_len]);
+	return (len);
 }

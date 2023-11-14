@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/13 19:26:19 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:10:55 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,18 @@
 # define CHAR_FLOOR '0'
 # define CHAR_EXIT 'E'
 # define CHAR_COIN 'C'
+# define CHAR_ENEMY 'F'
 
 # define WIDTH 64
 # define HEIGHT 64
 
 // assets
-# define WALL_PNG "./assets/wall_pokemon.png"
-# define FLOOR_PNG "./assets/floor_pokemon64.png"
-# define COIN_PNG "./assets/colectable.png"
-# define EXIT_PNG "./assets/exit_pokemon.png"
-# define FRONT_PNG "./assets/snorlax_front.png"
-# define BACK_PNG "./assets/snorlax_back.png"
-# define LEFT_PNG "./assets/snorlax_left.png"
-# define RIGHT_PNG "./assets/snorlax_right.png"
-
+# define WALL_PNG "./assets/wall.png"
+# define FLOOR_PNG "./assets/floor.png"
+# define COIN_PNG "./assets/coin.png"
+# define EXIT_PNG "./assets/exit.png"
+# define FRONT_PNG "./assets/snorlax.png"
+# define ENEMY_PNG "./assets/gastly.png"
 # define MAPS "./maps/"
 
 typedef enum e_bool
@@ -61,6 +59,7 @@ typedef struct s_image
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*exit;
+	mlx_image_t		*enemy;
 
 }					t_image;
 
@@ -82,18 +81,8 @@ typedef struct s_map
 	int				floor;
 	int				walls;
 	t_pos			player_pos;
-	t_pos			exit_pos;
 
 }					t_map;
-
-typedef struct s_tiles
-{
-	mlx_texture_t	*player;
-	mlx_texture_t	*floor;
-	mlx_texture_t	*walls;
-	mlx_texture_t	*exit;
-
-}					t_tiles;
 
 typedef struct s_game
 {
@@ -101,30 +90,33 @@ typedef struct s_game
 	int				fd;
 	char			*map_name;
 	t_map			map;
-	t_tiles			tiles;
 	t_image			img;
 	int				count;
 	t_mult			coin[100000];
-	t_mult			player[5];
-	int				x;
-	int				y;
+	t_mult			player[1];
+	int				moves;
 
 }					t_game;
 
 t_game				*initialize_value(void);
-
-//void				initialize_value(t_game *game);
 void				init_map_matrice(t_game *game);
 void				check_path(t_game *game);
 void				init_layer(t_game *game);
+void				flood_fill(t_game *game, int y, int x);
 void				init_mlx(t_game *game);
 void				image_init(t_game *game);
+void				place_png(t_game *game, mlx_image_t **image, char *path);
 void				render_floor(t_game *game);
-void				place_texture(t_game *game);
+void				render_map(t_game *game);
+void				render_coin(t_game *game, int x, int y, int *count);
+void				render_exit(t_game *game, int x, int y);
 void				keyhooks(mlx_key_data_t keydata, void *param);
 void				delete_image(t_game *game);
 void				ft_error(char *message, t_game *game);
 void				ft_error_message(char *message);
+void				touch_enemy(t_game *game, int x, int y);
 void				ft_free_map(char **matriz);
+void				write_counter(t_game *game);
+void				ft_finish(char *message, t_game *game);
 
 #endif

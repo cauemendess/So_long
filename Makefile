@@ -18,7 +18,7 @@ RED = \033[1;31m
 RESET = \033[0m
 
 SOURCES = $(addprefix src/, so_long.c initialize_game.c validate.c \
-error_and_free.c check_path.c render.c move.c delete_images.c)
+error_and_free.c check_path.c place.c render.c move.c delete_images.c move_bonus.c my_enemy_bonus.c)
 
 OBJECTS = $(SOURCES:%.c=%.o)
 

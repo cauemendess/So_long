@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/13 19:19:51 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:59:53 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	init_layer(t_game *game)
 		}
 		y++;
 	}
-	columns_len(game);	
+	columns_len(game);
 	validate_map(game);
 	check_walls(game);
+	flood_fill(game, game->map.player_pos.y, game->map.player_pos.x);
 	check_path(game);
 }
 
-
 void	define_map_struct(t_game *game, char c, int y, int x)
 {
-	if (ft_strchr("PEC01", c) == NULL)
+	if (ft_strchr("PEC01F", c) == NULL)
 		ft_error("Error, invalid character found!\n", game);
 	if (c == CHAR_PLAYER)
 	{
@@ -51,11 +51,7 @@ void	define_map_struct(t_game *game, char c, int y, int x)
 		game->map.player_pos = (t_pos){x, y};
 	}
 	else if (c == CHAR_EXIT)
-	{
 		game->map.exits++;
-		game->map.exit_pos = (t_pos){x * 64, y * 64};
-		
-	}
 	else if (c == CHAR_COIN)
 		game->map.coin++;
 	else if (c == CHAR_FLOOR)

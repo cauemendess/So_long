@@ -41,7 +41,9 @@ SOURCES = \
 	ft_tolower.c \
 	ft_toupper.c \
 	get_next_line.c \
-	get_next_line_utils.c
+	get_next_line_utils.c \
+	ft_printf.c ft_printf_utils.c ft_puthex.c ft_putnbr_base.c ft_putptr.c ft_putsig.c
+
 
 
 BONUS_SOURCES = \

@@ -6,16 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:07:26 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 20:01:54 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:09:47 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-t_bool	verify_walls(t_game *game, int x, int y);
-void	movement(t_game *game, int x, int y);
-void	collect_item(t_game *game, int x, int y);
-void	exit_game(t_game *game, int x, int y);
 
 void	keyhooks(mlx_key_data_t keydata, void *param)
 {

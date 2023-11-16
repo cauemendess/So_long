@@ -6,17 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:19 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 19:59:53 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:29:24 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init_map_matrice(t_game *game);
-void	define_map_struct(t_game *game, char c, int y, int x);
-int		columns_len(t_game *game);
-void	validate_map(t_game *game);
-void	check_walls(t_game *game);
 
 void	init_layer(t_game *game)
 {
@@ -58,6 +52,8 @@ void	define_map_struct(t_game *game, char c, int y, int x)
 		game->map.floor++;
 	else if (c == CHAR_WALL)
 		game->map.walls++;
+	else if (c == CHAR_ENEMY)
+		game->map.enemy++;
 }
 
 int	columns_len(t_game *game)

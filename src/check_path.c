@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:42:50 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 16:59:46 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:24:33 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	flood_fill(t_game *game, int y, int x)
 {
 	if (game->map.matrice_fill[y][x] == '1'
 		|| game->map.matrice_fill[y][x] == 'X'
-		|| game->map.matrice_fill[y][x] == 'I')
+		|| game->map.matrice_fill[y][x] == 'F')
 		return ;
 	game->map.matrice_fill[y][x] = 'X';
 	flood_fill(game, y - 1, x);

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:05 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 16:57:00 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:23:00 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_game	*initialize_value(void)
 	game->map.exits = 0;
 	game->map.floor = 0;
 	game->map.walls = 0;
+	game->map.enemy = 0;
 	game->count = 0;
 	game->moves = 1;
 	return (game);

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:02:47 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 20:02:19 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:31:52 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 void	touch_enemy(t_game *game, int x, int y)
 {
-	if (x == game->img.enemy->instances[0].x
-		&& y == game->img.enemy->instances[0].y)
+	int	i;
+
+	i = 0;
+	while (i < game->map.enemy)
 	{
-		delete_image(game);
-		ft_finish("You touch an enemy :(\n", game);
+		if (x == game->img.enemy->instances[i].x
+			&& y == game->img.enemy->instances[i].y)
+		{
+			delete_image(game);
+			ft_finish("You touch an enemy :(\n", game);
+		}
+		i++;
 	}
 }

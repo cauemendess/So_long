@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:14 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 20:10:55 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:42:28 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -80,6 +79,7 @@ typedef struct s_map
 	int				exits;
 	int				floor;
 	int				walls;
+	int				enemy;
 	t_pos			player_pos;
 
 }					t_map;
@@ -118,5 +118,13 @@ void				touch_enemy(t_game *game, int x, int y);
 void				ft_free_map(char **matriz);
 void				write_counter(t_game *game);
 void				ft_finish(char *message, t_game *game);
+t_bool				verify_walls(t_game *game, int x, int y);
+void				movement(t_game *game, int x, int y);
+void				collect_item(t_game *game, int x, int y);
+void				exit_game(t_game *game, int x, int y);
+void				define_map_struct(t_game *game, char c, int y, int x);
+int					columns_len(t_game *game);
+void				validate_map(t_game *game);
+void				check_walls(t_game *game);
 
 #endif

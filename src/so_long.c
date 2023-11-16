@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:43:09 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/11/14 20:03:07 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:13:13 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	game = initialize_value();
 	arguments_check(argc, argv);
+	game = initialize_value();
 	game->map_name = argv[1];
 	game->fd = open(game->map_name, O_RDONLY);
 	init_map_matrice(game);

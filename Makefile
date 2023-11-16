@@ -12,20 +12,14 @@ OBJ_DIR = ./obj
 MLXFLAGS = $(MLX) $(INCLUDE) -ldl -lglfw -pthread -lm
 
 
-# colors
-GREEN = \033[1;32m
-RED = \033[1;31m
-RESET = \033[0m
-
 SOURCES = $(addprefix src/, so_long.c initialize_game.c validate.c \
 error_and_free.c check_path.c place.c render.c move.c delete_images.c move_bonus.c my_enemy_bonus.c)
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
+all: $(MLX) $(LIBFT) $(NAME)
 
-all: $(NAME)
-
-$(NAME): $(OBJECTS) $(MLX) $(LIBFT)
+$(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(MLXFLAGS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
@@ -38,26 +32,26 @@ $(MLX):
 	cmake -S ./MLX42 -B ./MLX42/build -DDEBUG=1
 	cmake --build ./MLX42/build -j4
 
-clean: 
-	@rm -rf $(OBJECTS)
-
-
-fclean: clean libfclean
-	@rm -f $(NAME)
-
-
 libclean:
 	@make clean -C ./libft --no-print-directory
 
-libfclean:
+libfclean: libclean
 	@make fclean -C ./libft --no-print-directory
 
+clean: libclean
+	@rm -rf $(OBJECTS)
+
+fclean: clean libfclean
+	@cd ./MLX42/build && make clean --no-print-directory
+	@rm -f $(NAME)
 
 re: fclean all
+
+bonus: all
 
 mlxre:
 	cmake --build ./MLX42/build --clean-first --no-print-directory
 
 reall: fclean mlxre all
 
-.PHONY: all clean fclean re mlxre reall
+.PHONY: all clean fclean re mlxre reall libfclean libclean libft
